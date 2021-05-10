@@ -1,8 +1,8 @@
 # Open Stack 
 ## Documentació
-El proyecto OpenStack es una plataforma de computación en la nube de código abierto que admite todo tipo de entornos en la nube. El proyecto apunta a una implementación simple, escalabilidad masiva y un rico conjunto de características. Expertos en computación en la nube de todo el mundo contribuyen al proyecto.
 
-OpenStack proporciona una solución de infraestructura como servicio (IaaS) a través de una variedad de servicios complementarios. Cada servicio ofrece una interfaz de programación de aplicaciones (API) que facilita esta integración.
+Openstack es una plataforma de computació al cloud de codi obert que admet tot tipus de entorns. Es una implementacio simple, amb escalabilitat massiva i un conjunt extens de caracteristiques. Proporciona solucions de IaaS (Infrastructure as a Service) a través d'una varietat de serveis. Cada servei ofereix una interficie de programació d'aplicacions que facilita la integració.
+
 
 Esta guía cubre la implementación paso a paso de los principales servicios de OpenStack utilizando una arquitectura de ejemplo funcional adecuada para nuevos usuarios de OpenStack con suficiente experiencia en Linux. Esta guía no está diseñada para ser utilizada para instalaciones de sistemas de producción, sino para crear una prueba de concepto mínima con el fin de aprender sobre OpenStack.
 
