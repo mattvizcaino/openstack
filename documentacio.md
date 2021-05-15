@@ -8,7 +8,7 @@ de IaaS *(Infrastructure as a Service)* a través d'una varietat de serveis.
 Cada servei ofereix una interficie de programació d'aplicacions *(API)* que facilita 
 la integració.
 
-A continuaci la llista de serveis i les seves respectives API:
+A continuació la llista de serveis i les seves respectives API:
 ### Serveis
 * Telemetry Alarming services (aodh)
 
