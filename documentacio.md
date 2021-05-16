@@ -212,7 +212,7 @@ root@microstack-v2:~# microstack.openstack server list
 | 1fc4b2a1-ce36-41a4-a272-205b90a37205 | test      | ERROR  |                                    | fedoracloud27 | m1.tiny  |
 | edf71082-4c50-4537-96fd-ec7ec712fd56 | test      | ACTIVE | test=192.168.222.180, 10.20.20.175 | cirros        | m1.tiny  |
 +--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
-```
+	```
 
 * Pause
 
