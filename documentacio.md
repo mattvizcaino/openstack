@@ -1,5 +1,6 @@
-# Open Stack 
-## Documentació
+# OpenStack 
+
+# Documentació
 
 Openstack es una plataforma de computació al cloud de codi obert que admet 
 tot tipus de entorns. Es una implementacio simple, amb escalabilitat 
@@ -99,26 +100,22 @@ root@microstack-v2:~# microstack.openstack catalog list
 
 ```
 
-Disposem de ordres per poder consultar,afegir o esborrar imatges, instancies, xarxes...
+## Utilitzant *Nova*
+
+Disposem de ordres per poder **consultar,afegir o esborrar imatges, instancies, xarxes...**
 
 Per engegar una instancia amb tot per defecte, es una instrucció sencilla:
 
-```microstack launch <imatge> --name <nom>```
-
-### Visualitzar les instancies que tenim 
 ```
-root@microstack-v2:~# microstack.openstack server list
-+--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
-| ID                                   | Name      | Status | Networks                           | Image         | Flavor   |
-+--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
-| b76e2e25-e7e0-453e-a740-8aabe411a258 | vm-cirros | ACTIVE | test=192.168.222.54, 10.20.20.118  | cirros        | m1.tiny  |
-| 562d8831-d269-4005-acb4-3c32c8178415 | test      | ERROR  |                                    |               | m1.small |
-| 1fc4b2a1-ce36-41a4-a272-205b90a37205 | test      | ERROR  |                                    | fedoracloud27 | m1.tiny  |
-| edf71082-4c50-4537-96fd-ec7ec712fd56 | test      | ACTIVE | test=192.168.222.180, 10.20.20.175 | cirros        | m1.tiny  |
-+--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
+microstack launch <imatge> --name <nom>
 ```
 
-### Visualitzar les imatges disponibles
+
+
+### Administrar les imatges (*glance*)
+
+* Llistar imatges disponibles
+
 ```
 root@microstack-v2:~# microstack.openstack image list
 +--------------------------------------+---------------+--------+
@@ -129,6 +126,40 @@ root@microstack-v2:~# microstack.openstack image list
 | aa178bbd-68e9-4729-80aa-fd5ad4842c5b | fedoracloud27 | active |
 +--------------------------------------+---------------+--------+
 
+```
+
+* Mostrar detall d'una imatge
+
+```
+root@microstack-v2:~# microstack.openstack image show debian9
++------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field            | Value                                                                                                                                                                                      |
++------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| checksum         | bc3186a64e3c0a4c75b71512fd2933ef                                                                                                                                                           |
+| container_format | bare                                                                                                                                                                                       |
+| created_at       | 2021-05-14T12:00:21Z                                                                                                                                                                       |
+| disk_format      | qcow2                                                                                                                                                                                      |
+| file             | /v2/images/9ede85cc-9deb-42df-8712-c371f93a3943/file                                                                                                                                       |
+| id               | 9ede85cc-9deb-42df-8712-c371f93a3943                                                                                                                                                       |
+| min_disk         | 10                                                                                                                                                                                         |
+| min_ram          | 1024                                                                                                                                                                                       |
+| name             | debian9                                                                                                                                                                                    |
+| owner            | 773932d230804fbfbc39b88bca6d70fe                                                                                                                                                           |
+| properties       | os_hash_algo='sha512', os_hash_value='23901bfb6717276d7da47e1e33a5dbc1a431eb330d3e8cf079b1bcf1b0e0320e37f44f2a913d5af75b9a43ffc6b17861a1df17169fd3883234c8bace87ff8118', os_hidden='False' |
+| protected        | False                                                                                                                                                                                      |
+| schema           | /v2/schemas/image                                                                                                                                                                          |
+| size             | 623603712                                                                                                                                                                                  |
+| status           | active                                                                                                                                                                                     |
+| tags             |                                                                                                                                                                                            |
+| updated_at       | 2021-05-14T12:00:28Z                                                                                                                                                                       |
+| visibility       | public                                                                                                                                                                                     |
++------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```
+
+```
+$ openstack image create --disk-format qcow2 --container-format bare \
+  --public --file ./centos63.qcow2 centos63-image
 ```
 
 ### Crear i visualitzar els tamanys per les VM
@@ -167,14 +198,107 @@ root@microstack-v2:~# microstack.openstack flavor list
 
 
 
+### Administracio de la instancia (*Nova*)
+
+* Visualitzar les instancies que tenim 
+
+	```
+root@microstack-v2:~# microstack.openstack server list
++--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
+| ID                                   | Name      | Status | Networks                           | Image         | Flavor   |
++--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
+| b76e2e25-e7e0-453e-a740-8aabe411a258 | vm-cirros | ACTIVE | test=192.168.222.54, 10.20.20.118  | cirros        | m1.tiny  |
+| 562d8831-d269-4005-acb4-3c32c8178415 | test      | ERROR  |                                    |               | m1.small |
+| 1fc4b2a1-ce36-41a4-a272-205b90a37205 | test      | ERROR  |                                    | fedoracloud27 | m1.tiny  |
+| edf71082-4c50-4537-96fd-ec7ec712fd56 | test      | ACTIVE | test=192.168.222.180, 10.20.20.175 | cirros        | m1.tiny  |
++--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
+```
+
+* Pause
+
+	```
+$ microstack.openstack server pause vm-cirros
+```
+
+	```
+$ microstack.openstack server unpause vm-cirros
+```
+* Suspend
+
+	```
+$ microstack.openstack server suspend vm-cirros
+```
+
+	```
+$ microstack.openstack server resume vm-cirros
+```
+
+* Stop
+
+	```
+$ microstack.openstack server stop vm-cirros
+```
+
+	```
+$ microstack.openstack server start vm-cirros
+```
+
+* Rescue 
+
+	```
+$ microstack.openstack server rescue vm-cirros
+```
+
+	```
+$ microstack.openstack server rescue vm-cirros
+```
+
+* Resize
+
+	```
+$ microstack.openstack server resize vm-cirros m1.mytiny
+```
+
+* Reboot
+
+	```
+$ microstack.openstack server reboot NAME
+```
+
+## Administracio de la xarxa (*neutron*)
+
+* Crear una xarxa
+
+```
+$ microstack.openstack network create NETWORK_NAME
+```
+
+* Crear subxarxa 
+
+```
+$ microstack.openstack subnet create --subnet-pool SUBNET --network NETWORK SUBNET_NAME
+```
+
+## Administracio de volums (*Cinder*)
+
+* Crear un volum
+
+	```
+$ openstack volume create --size SIZE_IN_GB NAME
+```
 
 
+* Llistar els volums
 
+	```
+$ openstack volume list
+```
 
+* Afegir un volum a una instancia
 
-
-
-
+	```
+$ openstack server add volume INSTANCE_ID VOLUME_ID
+```
 
 
 
