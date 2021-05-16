@@ -216,9 +216,7 @@ root@microstack-v2:~# microstack.openstack server list
 
 * Pause
 
-```
-$ microstack.openstack server pause vm-cirros
-```
+```$ microstack.openstack server pause vm-cirros```
 
 ```
 $ microstack.openstack server unpause vm-cirros
