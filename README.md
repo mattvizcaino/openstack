@@ -1,9 +1,16 @@
-# Projecte final OPENSTACK
-## Mati Vizcaíno Sánchez
-### Procediments
+# Curs 2020-2021
+# Projecte elaborat per:
+Mati Vizcaíno Sánchez
+# Escola:
+Institut escola del treball - Departament d'informàtica
+# Cicle formatiu de grau superior: 
+Administració de sistemes informàtics i xarxes
+
+![image openstack](images/logo_cloud.png)
+
+# Introducció
 
 
-![image openstack](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/OpenStack%C2%AE_Logo_2016.svg/245px-OpenStack%C2%AE_Logo_2016.svg.png)
 
 1. [Instalacio Openstack (Microstack)](instalacio.md)
 
