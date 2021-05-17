@@ -56,3 +56,4 @@ root@microstack-v2:~# microstack.openstack server show vm-cirros
 +-------------------------------------+----------------------------------------------------------+
 ```
 
+[Torna](README.md)
