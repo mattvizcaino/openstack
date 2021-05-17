@@ -156,17 +156,8 @@ root@microstack-v2:~# microstack.openstack image show debian9
 
 ```
 
-```
-$ openstack image create --disk-format qcow2 --container-format bare \
-  --public --file ./centos63.qcow2 centos63-image
-```
+* Crear i visualitzar plantilles de hardware
 
-```
-
-```
-
-
-### Crear i visualitzar els tamanys per les VM
 ```
 root@microstack-v2:~# microstack.openstack flavor create --ram 512 --disk 1 --vcpus 1 m1.mytiny
 +----------------------------+--------------------------------------+
@@ -470,10 +461,12 @@ La sortida d'aquesta ordre es la password per accedir al frontend d'OpenStack
 DlQhO08prtwkAVQclU9NG0HxVbbwGRix
 ```
 
+
+
+
+## Acces vía web a Openstack (*horizon*)
+
 ![openstack-login](images/openstack-login.png)
-
-
-## Acces vía web a Openstack(*horizon*)
 
 Per monitoritzar els resursos o administrar els components d'Openstack amb una eina grafica, ens ofereix una connexio via web amb autenticacio amb usuari i contrasenya.
 
@@ -486,20 +479,13 @@ També es pot administrar instancies des d'aquest panell
 # Instancies 
 ![openstack-panel](images/instances.png)
 
-Aqui podem visualitzar les instancies que tenim actives, si s'estan executant o estan parades, etc.
-També es poden crear i esborrar instancies.
-
 # Volums
 ![openstack-panel](images/volumes.png)
-
-
 
 # Imatges
 ![openstack-panel](images/images.png)
 
-
-
-
+Amb *horizon* podem administrar gairabé tot el que administrem via comandes amb clicks de ratolí. Una forma més sencilla pero és mes facil que doni errors.
 
 
 [Torna](README.md)

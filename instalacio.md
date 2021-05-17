@@ -82,23 +82,7 @@ root@microstack-v2:~#
 ```
 
 Un cop engegats tots els serveis, ja podem posar en marxa una maquina virtual
-utiltzan tots els components instalats.
-
-[Com posar en marxa una maquina virtual amb microstack](demo.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+utiltzan tots els components instalats. [Ja podem posar en marxa una maquina virtual](demo.md)
 
 [Torna](README.md)
 
