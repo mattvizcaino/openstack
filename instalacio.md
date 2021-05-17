@@ -1,10 +1,7 @@
+![openstack](images/logo.png)
 # Instalació
 
-Per utilitzar openstack hi ha una versio de prova que ens permet instalar a
-utomaticament tots els coponents necessaris perque funcioni. Dins d'openstack hi
- ha diferents components amb una funcionalitat cada un. La finalitat d'aquest 
-software es que agafis els components que necessites per montar la teva estructura.
-
+Per utilitzar openstack hi ha una versio de prova que ens permet instalar automaticament tots els components necessaris perque funcioni. Dins d'openstack hi ha diferents components amb una funcionalitat cada un. La finalitat d'aquest software es que agafis els components que necessites per montar la teva estructura. 
 
 **MicroStack** proporciona un desplegament d'OpenStack únic o multi-node que pot 
 funcionar directament en un equip. Es va fer per als desenvolupadors per a 
@@ -14,7 +11,7 @@ juntes en un sol paquet que es pot instal·lar, actualitzar o eliminar fàcilmen
 MicroStack inclou tots els components clau d'OpenStack: **Keystone, Nova, Neutron, 
 Glance i Cinder.**
 
-### Requisits necessaris per poder implementar-lo
+## Requisits necessaris per poder implementar-lo
 * Processador Multi-Core
 * Sistema Linux 
 	* Jo he triat Ubuntu 20.04
@@ -24,18 +21,24 @@ Glance i Cinder.**
 vaig decidir llogar un cloud a https://clouding.io/ i pagar per els recursos 
 necessaris*
 
+**Server:161.22.45.253**
+
 Per instal.lar aquesta petita versio de openstack la comunitat de Canonical ha 
 elaborat una forma sencilla de poder fer-ho amb l'eina de gestio i instalacio *snap*.
 
-```sudo snap install microstack --devmode --beta```
+```
+$ sudo snap install microstack --devmode --beta
+```
 
 Amb aquesta ordre estan comprimits tots els components basics per a fer funcionar
 Openstack en un sol paquet. Finalitza  amb:
 
-```microstack (beta) ussuri from Canonical✓ installed```
+```
+microstack (beta) ussuri from Canonical✓ installed
+```
 
-Microstack funciona com un sol servei, un cop instalat cal engegarlo. Executant-la
-podem veure el proces d'inicialització de cada un dels components.
+**Microstack** funciona com un sol servei, un cop instalat cal engegarlo. 
+Executant la ordre que l'engega, podem veure el proces d'inicialització de cada un dels components.
 
 ```
 root@microstack-v2:~# sudo microstack init --auto --control
@@ -79,7 +82,7 @@ root@microstack-v2:~#
 ```
 
 Un cop engegats tots els serveis, ja podem posar en marxa una maquina virtual
-utiltzan **nova**.
+utiltzan tots els components instalats.
 
 [Com posar en marxa una maquina virtual amb microstack](demo.md)
 

@@ -1,5 +1,4 @@
-# OpenStack 
-
+![openstack](images/logo.png)
 # Documentació
 
 Openstack es una plataforma de computació al cloud de codi obert que admet 
@@ -16,7 +15,7 @@ A continuació la llista de serveis i les seves respectives API:
 * Key Manager service (barbican)
 * Resource reservation service (blazar)
 * Telemetry Data Collection service (ceilometer)
-* Block Storage service (cinder)
+* **Block Storage service (cinder)**
 * Rating service (cloudkitty)
 * DNS service (designate)
 * **Image service (glance)**
@@ -326,6 +325,20 @@ root@microstack-v2:~# microstack.openstack volume show volume-edt
 
 ### Administracio de la instancia (*Nova*)
 
+* Crear una instancia
+
+```
+microstack.opentack server create INSTANCE_ID
+```
+
+*sense especificacions*
+
+* Esborrar una instancia
+
+```
+microstack.opentack server delete INSTANCE_ID
+```
+
 * Visualitzar les instancies que tenim 
 
 ```
@@ -340,7 +353,7 @@ root@microstack-v2:~# microstack.openstack server list
 +--------------------------------------+-----------+--------+------------------------------------+---------------+----------+
 ```
 
-* Pause
+* Pausar i treure la pausa a la instancia
 
 ```
 $ microstack.openstack server pause vm-cirros
@@ -349,7 +362,7 @@ $ microstack.openstack server pause vm-cirros
 ```
 $ microstack.openstack server unpause vm-cirros
 ```
-* Suspend
+* Posar en suspensio i renaudar la instancia
 
 ```
 $ microstack.openstack server suspend vm-cirros
@@ -359,7 +372,7 @@ $ microstack.openstack server suspend vm-cirros
 $ microstack.openstack server resume vm-cirros
 ```
 
-* Stop
+* Aturar i engegar la instancia
 
 ```
 $ microstack.openstack server stop vm-cirros
@@ -369,27 +382,64 @@ $ microstack.openstack server stop vm-cirros
 $ microstack.openstack server start vm-cirros
 ```
 
-* Rescue 
+* Recuperar una instancia a partir d'una imatge
 
 ```
-$ microstack.openstack server rescue vm-cirros
+$ microstack.openstack server rescue --image cirros vm-cirros
 ```
 
-```
-$ microstack.openstack server rescue vm-cirros
-```
 
-* Resize
+* Redimensionar la instancia amb un altre tamany
 
 ```
 $ microstack.openstack server resize vm-cirros m1.mytiny
 ```
 
-* Reboot
+* Rebotar la instancia
 
 ```
 $ microstack.openstack server reboot NAME
 ```
+
+* Accedir a una instancia desde Openstack amb ssh
+
+```
+root@microstack-v2:~# microstack.openstack server ssh --login cirros --identity /home/root/snap/microstack/common/.ssh/id_microstack vm-cirros
+$ uname -a 
+Linux vm-cirros 4.4.0-28-generic #47-Ubuntu SMP Fri Jun 24 10:09:13 UTC 2016 x86_64 GNU/Linux
+$ pwd
+/home/cirros
+$ 
+
+```
+
+### Altres posibilitats d'administracio
+
+* **Afegir objectes**
+	*  ```microstack.openstack server add fixed ip```
+	*  ```microstack.openstack server add floating ip```
+	*  ```microstack.openstack server add network```
+	*  ```microstack.openstack server add port```
+	*  ```microstack.openstack server add security group```
+	*  ```microstack.openstack server add volume```
+
+* **Esborrar objectes**
+	*  ```microstack.openstack server remove fixed ip```
+	*  ```microstack.openstack server remove floating ip```
+	*  ```microstack.openstack server remove network```
+	*  ```microstack.openstack server remove port```
+	*  ```microstack.openstack server remove security group```
+	*  ```microstack.openstack server remove volume```
+* **Crear un backup**
+	*  ```microstack.openstack server backup create```
+
+* **Administracio de grups**
+	*  ```microstack.openstack server group create```
+	*  ```microstack.openstack server group delete```
+	*  ```microstack.openstack server group list```
+	*  ```microstack.openstack server group show```
+
+
 
 ## Administracio de la xarxa (*neutron*)
 
@@ -405,9 +455,47 @@ $ microstack.openstack network create NETWORK_NAME
 $ microstack.openstack subnet create --subnet-pool SUBNET --network NETWORK SUBNET_NAME
 ```
 
+## Administracio d'identitat (*keystone*)
+
+*En aquest projecte aquest component nomes l'he utilitzar per obtenir les credencials per accedir via web al panell de gestió  d'OpenStack*
+
+* Obtenir la password de admin
+
+```
+sudo snap get microstack config.credentials.keystone-password
+```
+La sortida d'aquesta ordre es la password per accedir al frontend d'OpenStack
+
+```
+DlQhO08prtwkAVQclU9NG0HxVbbwGRix
+```
+
+![openstack-login](images/openstack-login.png)
+
+
+## Acces vía web a Openstack(*horizon*)
+
+Per monitoritzar els resursos o administrar els components d'Openstack amb una eina grafica, ens ofereix una connexio via web amb autenticacio amb usuari i contrasenya.
+
+![openstack-panel](images/overview-web.png)
+
+Podem observar els recursos que s'estan consumint, i amb el grafic circular i el tant per cent ens indica quanta capacitat li queda.
+
+També es pot administrar instancies des d'aquest panell
+
+# Instancies 
+![openstack-panel](images/instances.png)
+
+Aqui podem visualitzar les instancies que tenim actives, si s'estan executant o estan parades, etc.
+També es poden crear i esborrar instancies.
+
+# Volums
+![openstack-panel](images/volumes.png)
 
 
 
+# Imatges
+![openstack-panel](images/images.png)
 
 
 
