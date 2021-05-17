@@ -10,6 +10,7 @@ Cada servei ofereix una interficie de programació d'aplicacions *(API)* que fac
 la integració.
 
 A continuació la llista de serveis i les seves respectives API:
+
 ### Serveis
 * Telemetry Alarming services (aodh)
 * Key Manager service (barbican)
@@ -38,7 +39,18 @@ A continuació la llista de serveis i les seves respectives API:
 * Containers service (zun) 
 
 
+# Utilitzant microstack
+
 ## Ordres openstack (microstack)
+
+* Disposem de ordres per poder **consultar,afegir o esborrar imatges, instancies, xarxes...***
+
+Per engegar una instancia amb tot per defecte, es una instrucció sencilla:
+
+```
+microstack launch <imatge> --name <nom>
+```
+
 
 Amb l'ordre següent podem veure els components que utilitza openstack per funcionar amb la versió de microstack.
 
@@ -100,19 +112,7 @@ root@microstack-v2:~# microstack.openstack catalog list
 
 ```
 
-## Utilitzant *Nova*
-
-Disposem de ordres per poder **consultar,afegir o esborrar imatges, instancies, xarxes...**
-
-Per engegar una instancia amb tot per defecte, es una instrucció sencilla:
-
-```
-microstack launch <imatge> --name <nom>
-```
-
-
-
-### Administrar les imatges (*glance*)
+## Administrar les imatges (*glance*)
 
 * Llistar imatges disponibles
 
@@ -162,6 +162,11 @@ $ openstack image create --disk-format qcow2 --container-format bare \
   --public --file ./centos63.qcow2 centos63-image
 ```
 
+```
+
+```
+
+
 ### Crear i visualitzar els tamanys per les VM
 ```
 root@microstack-v2:~# microstack.openstack flavor create --ram 512 --disk 1 --vcpus 1 m1.mytiny
@@ -194,9 +199,130 @@ root@microstack-v2:~# microstack.openstack flavor list
 
 ```
 
+## Administracio de volums (*Cinder*)
 
+* Crear un volum
 
+```
+$ openstack volume create --size SIZE_IN_GB NAME
+```
 
+**Exemple:**
+
+```
+root@microstack-v2:~# microstack.openstack volume create --size 1 volume-edt
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| attachments         | []                                   |
+| availability_zone   | nova                                 |
+| bootable            | false                                |
+| consistencygroup_id | None                                 |
+| created_at          | 2021-05-17T08:30:19.000000           |
+| description         | None                                 |
+| encrypted           | False                                |
+| id                  | 73b620ef-496f-462c-b4a8-f26d4e85489e |
+| migration_status    | None                                 |
+| multiattach         | False                                |
+| name                | volume-edt                           |
+| properties          |                                      |
+| replication_status  | None                                 |
+| size                | 1                                    |
+| snapshot_id         | None                                 |
+| source_volid        | None                                 |
+| status              | creating                             |
+| type                | __DEFAULT__                          |
+| updated_at          | None                                 |
+| user_id             | 3687bc329d8c4801905a57f2c6db6a49     |
++---------------------+--------------------------------------+
+```
+
+* Llistar els volums
+
+```
+$ openstack volume list
+```
+
+**Exemple:**
+
+```
+root@microstack-v2:~# microstack.openstack volume list
++--------------------------------------+------------+--------+------+-------------+
+| ID                                   | Name       | Status | Size | Attached to |
++--------------------------------------+------------+--------+------+-------------+
+| 73b620ef-496f-462c-b4a8-f26d4e85489e | volume-edt |  error |    1 |             |
++--------------------------------------+------------+--------+------+-------------+
+
+```
+
+* Afegir un volum a una instancia
+
+```
+$ openstack server add volume INSTANCE_ID VOLUME_ID
+```
+
+```
+root@microstack-v2:~# microstack.openstack server add volume edf71082-4c50-4537-96fd-ec7ec712fd56 volume-edt
+Invalid input received: Invalid volume: Volume attachments can not be created if the volume is in an error
+state. The Volume 73b620ef-496f-462c-b4a8-f26d4e85489e currently has a status of: error  (HTTP 400)
+(Request-ID: req-8923e0fe-8712-4bc0-979c-6552a0f8b845) 
+(HTTP 400) (Request-ID: req-17912451-8675-42a0-8011-d1a779a4eefd)
+```
+
+*Degut a que el volum anterior s'ha creat amb estat d'error, no he pogut afegir-lo a la instancia*
+
+* Visualitzar zona de creacio d'un volum
+
+```
+root@microstack-v2:~# microstack.openstack availability zone list
++-----------+-------------+
+| Zone Name | Zone Status |
++-----------+-------------+
+| internal  | available   |
+| nova      | available   |
++-----------+-------------+
+
+```
+
+* Veure detalls d'un volum
+
+```
+$ openstack volume show VOLUME_ID
+```
+
+**Exemple:**
+
+```
+root@microstack-v2:~# microstack.openstack volume show volume-edt
++--------------------------------+--------------------------------------+
+| Field                          | Value                                |
++--------------------------------+--------------------------------------+
+| attachments                    | []                                   |
+| availability_zone              | nova                                 |
+| bootable                       | false                                |
+| consistencygroup_id            | None                                 |
+| created_at                     | 2021-05-17T08:30:19.000000           |
+| description                    | None                                 |
+| encrypted                      | False                                |
+| id                             | 73b620ef-496f-462c-b4a8-f26d4e85489e |
+| migration_status               | None                                 |
+| multiattach                    | False                                |
+| name                           | volume-edt                           |
+| os-vol-host-attr:host          | None                                 |
+| os-vol-mig-status-attr:migstat | None                                 |
+| os-vol-mig-status-attr:name_id | None                                 |
+| os-vol-tenant-attr:tenant_id   | 773932d230804fbfbc39b88bca6d70fe     |
+| properties                     |                                      |
+| replication_status             | None                                 |
+| size                           | 1                                    |
+| snapshot_id                    | None                                 |
+| source_volid                   | None                                 |
+| status                         | error                                |
+| type                           | __DEFAULT__                          |
+| updated_at                     | 2021-05-17T08:30:19.000000           |
+| user_id                        | 3687bc329d8c4801905a57f2c6db6a49     |
++--------------------------------+--------------------------------------+
+```
 
 ### Administracio de la instancia (*Nova*)
 
@@ -216,7 +342,9 @@ root@microstack-v2:~# microstack.openstack server list
 
 * Pause
 
-```$ microstack.openstack server pause vm-cirros```
+```
+$ microstack.openstack server pause vm-cirros
+```
 
 ```
 $ microstack.openstack server unpause vm-cirros
@@ -233,33 +361,33 @@ $ microstack.openstack server resume vm-cirros
 
 * Stop
 
-	```
+```
 $ microstack.openstack server stop vm-cirros
 ```
 
-	```
+```
 $ microstack.openstack server start vm-cirros
 ```
 
 * Rescue 
 
-	```
+```
 $ microstack.openstack server rescue vm-cirros
 ```
 
-	```
+```
 $ microstack.openstack server rescue vm-cirros
 ```
 
 * Resize
 
-	```
+```
 $ microstack.openstack server resize vm-cirros m1.mytiny
 ```
 
 * Reboot
 
-	```
+```
 $ microstack.openstack server reboot NAME
 ```
 
@@ -277,26 +405,6 @@ $ microstack.openstack network create NETWORK_NAME
 $ microstack.openstack subnet create --subnet-pool SUBNET --network NETWORK SUBNET_NAME
 ```
 
-## Administracio de volums (*Cinder*)
-
-* Crear un volum
-
-	```
-$ openstack volume create --size SIZE_IN_GB NAME
-```
-
-
-* Llistar els volums
-
-	```
-$ openstack volume list
-```
-
-* Afegir un volum a una instancia
-
-	```
-$ openstack server add volume INSTANCE_ID VOLUME_ID
-```
 
 
 
