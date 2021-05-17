@@ -15,7 +15,7 @@ Openstack és la suma de diversos components que tenen una funció específica i
 
 **Paas (Platform as a service):** Ofereix un entorn com a servei, pensat principalment per a desenvolupadors: Xarxa hat OpenShift, Google App Engine.
 
-**Iaas (Platform as a service):** Ofereixen infraestructures d'emmagatzematge i màquines virtuals en el núvol. És a dir la infraestructura necessària per a muntar qualsevol dels altres dos serveis.
+**Iaas (Infrastructure as a service):** Ofereixen infraestructures d'emmagatzematge i màquines virtuals en el núvol. És a dir la infraestructura necessària per a muntar qualsevol dels altres dos serveis.
 
 ![infografia](images/infografia.png)
 
@@ -37,7 +37,6 @@ Aquest serie un funcionament bàsic dels components d'openstack "necessaris"
 * **Codi obert:** No sols significa gratis, significa que qualsevol pot aportar i consultar el codi. Té una llicencia Apache 2.0 i no té versió de pagament, encara que hi ha empreses que si cobren pel suport o l'ús del seu sistema operatiu. Per exemple *Red Hat Openstack.*
 
 Com això és programari lliure cada empresa pot agafar els mòduls i fer el que vulgui amb ells per a oferir-los al seu client.
-
 
 # Continguts
 
