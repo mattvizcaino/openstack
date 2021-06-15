@@ -21,7 +21,7 @@ Glance i Cinder.**
 vaig decidir llogar un cloud a https://clouding.io/ i pagar per els recursos 
 necessaris*
 
-**Server:161.22.45.253**
+**Server:161.22.47.54**
 
 Per instal.lar aquesta petita versio de openstack la comunitat de Canonical ha 
 elaborat una forma sencilla de poder fer-ho amb l'eina de gestio i instalacio *snap*.

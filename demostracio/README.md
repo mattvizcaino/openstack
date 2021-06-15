@@ -33,4 +33,4 @@ Per visualitzar informacio sobre alguns dels elements d'openstack podem fer les 
 * openstack server list
 * openstack server show <nom>
 
-[Torna](README.md)
+[Torna](openstack/README.md)
