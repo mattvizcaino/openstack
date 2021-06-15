@@ -12,7 +12,7 @@ Administració de sistemes informàtics i xarxes
 
 1. [Com utilitzar Microstack](documentacio.md)
 	* Llista de serveis
-	* [Ordres openstack (microstack)](documentacio.md#Ordres openstack (microstack))
+	* Ordres openstack (microstack)
 		* Administrar imatges
 		* Administrar volums
 		* Administrar instancies
