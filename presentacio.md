@@ -16,5 +16,5 @@
 ![diapositiva](presentacio/16.png)
 ![diapositiva](presentacio/17.png)
 ![diapositiva](presentacio/18.png)
-![diapositiva](presentacio/19.png)
+
 
