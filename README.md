@@ -8,6 +8,26 @@ Administració de sistemes informàtics i xarxes
 
 ![image openstack](images/logo_cloud.png)
 
+# Continguts
+
+1. [Com utilitzar Microstack](documentacio.md)
+	* Llista de serveis
+	* [Ordres openstack (microstack)](documentacio.md#Ordres openstack (microstack))
+		* Administrar imatges
+		* Administrar volums
+		* Administrar instancies
+		* Administrar la xarxa
+		* Administrar la identitat
+		* Altres ordres útils d'administracio
+	* Accés via web a Openstack
+
+1. [Instalacio Openstack (Microstack)](instalacio.md)
+	* Explicació microstack
+	* Requisits necessaris
+	* IP del server
+	* Instalació pas a pas
+1. [Com posar en marxa una maquina virtual amb microstack](demo.md)
+
 # Introducció
 Openstack és la suma de diversos components que tenen una funció específica i que pots instal·lar de manera separada o conjunta segons la distribució que triïs. És totalment modular, pots triar que instal·lar i que no.
 
@@ -38,10 +58,3 @@ Aquest serie un funcionament bàsic dels components d'openstack "necessaris"
 
 Com això és programari lliure cada empresa pot agafar els mòduls i fer el que vulgui amb ells per a oferir-los al seu client.
 
-# Continguts
-
-1. [Instalacio Openstack (Microstack)](instalacio.md)
-
-1. [Com utilitzar Microstack](documentacio.md)
-
-1. [Com posar en marxa una maquina virtual amb microstack](demo.md)

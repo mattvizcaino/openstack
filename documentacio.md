@@ -404,34 +404,6 @@ $
 
 ```
 
-### Altres posibilitats d'administracio
-
-* **Afegir objectes**
-	*  ```microstack.openstack server add fixed ip```
-	*  ```microstack.openstack server add floating ip```
-	*  ```microstack.openstack server add network```
-	*  ```microstack.openstack server add port```
-	*  ```microstack.openstack server add security group```
-	*  ```microstack.openstack server add volume```
-
-* **Esborrar objectes**
-	*  ```microstack.openstack server remove fixed ip```
-	*  ```microstack.openstack server remove floating ip```
-	*  ```microstack.openstack server remove network```
-	*  ```microstack.openstack server remove port```
-	*  ```microstack.openstack server remove security group```
-	*  ```microstack.openstack server remove volume```
-* **Crear un backup**
-	*  ```microstack.openstack server backup create```
-
-* **Administracio de grups**
-	*  ```microstack.openstack server group create```
-	*  ```microstack.openstack server group delete```
-	*  ```microstack.openstack server group list```
-	*  ```microstack.openstack server group show```
-
-
-
 ## Administracio de la xarxa (*neutron*)
 
 * Crear una xarxa
@@ -461,7 +433,31 @@ La sortida d'aquesta ordre es la password per accedir al frontend d'OpenStack
 DlQhO08prtwkAVQclU9NG0HxVbbwGRix
 ```
 
+### Altres posibilitats d'administracio
 
+* **Afegir objectes**
+	*  ```microstack.openstack server add fixed ip```
+	*  ```microstack.openstack server add floating ip```
+	*  ```microstack.openstack server add network```
+	*  ```microstack.openstack server add port```
+	*  ```microstack.openstack server add security group```
+	*  ```microstack.openstack server add volume```
+
+* **Esborrar objectes**
+	*  ```microstack.openstack server remove fixed ip```
+	*  ```microstack.openstack server remove floating ip```
+	*  ```microstack.openstack server remove network```
+	*  ```microstack.openstack server remove port```
+	*  ```microstack.openstack server remove security group```
+	*  ```microstack.openstack server remove volume```
+* **Crear un backup**
+	*  ```microstack.openstack server backup create```
+
+* **Administracio de grups**
+	*  ```microstack.openstack server group create```
+	*  ```microstack.openstack server group delete```
+	*  ```microstack.openstack server group list```
+	*  ```microstack.openstack server group show```
 
 
 ## Acces vía web a Openstack (*horizon*)
