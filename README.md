@@ -33,7 +33,7 @@ Openstack és la suma de diversos components que tenen una funció específica i
 
 **Saas (Software as a service):** Ofereixen una aplicació en el núvol com a servei. En el cas del Saas tens milers d'exemples: Gmail, Office 365, Outlook, Skype…
 
-**Paas (Platform as a service):** Ofereix un entorn com a servei, pensat principalment per a desenvolupadors: Xarxa hat OpenShift, Google App Engine.
+**Paas (Platform as a service):** Ofereix un entorn com a servei, pensat principalment per a desenvolupadors: Red hat OpenShift, Google App Engine.
 
 **Iaas (Infrastructure as a service):** Ofereixen infraestructures d'emmagatzematge i màquines virtuals en el núvol. És a dir la infraestructura necessària per a muntar qualsevol dels altres dos serveis.
 
