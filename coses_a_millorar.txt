@@ -1,7 +1,0 @@
-1. Explicar millor els components amb referencies a vida quotidiana o AWS.
-2. A la demo, posar en marxa microstack, demostrar o llistar components 
-3. Crear esborrar imatges
-4. Explicar components imprescindibles no tots.
-5. Explicar bé com funciona openstack
-6. Demostrar funcionament de diferents components
-7. 
